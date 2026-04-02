@@ -16,8 +16,8 @@ const anggota = [
     accent: 'from-[#210201] via-[#4F1312] to-[#210201]',
   },
 //   {
-//     path: '/rizky',
-//     namaLengkap: 'Rizky Fauzan Hakim',
+//     path: '/mifta',
+//     namaLengkap: 'mifta annisa rabbani',
 //     kelas: 'T2F',
 //     jurusan: 'Teknologi Informasi',
 //     domisili: 'Malang, Jawa Timur',

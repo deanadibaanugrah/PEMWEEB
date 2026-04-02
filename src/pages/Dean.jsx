@@ -1,11 +1,29 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { MapPin, GraduationCap, Briefcase, Code2, Layout, Terminal, Cpu, ArrowLeft } from 'lucide-react';
+// Hapus Instagram & Github dari import agar tidak error
+import { MapPin, GraduationCap, Briefcase, Code2, Layout, Terminal, Cpu, ArrowLeft, X } from 'lucide-react';
 import fotoDean from '../assets/profil.jpg';
+
+// --- BUAT ICON MANUAL (SVG) AGAR TIDAK ERROR ---
+const InstagramIcon = (props) => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+  </svg>
+);
+
+const GithubIcon = (props) => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+  </svg>
+);
+// -----------------------------------------------
 
 const Dean = () => {
   const navigate = useNavigate();
   const techStackRef = useRef(null);
+  const [showContact, setShowContact] = useState(false);
 
   const scrollToTechStack = () => {
     techStackRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -27,6 +45,26 @@ const Dean = () => {
     { name: "HTML5", icon: <Code2 className="text-orange-600" />, level: "Expert" },
     { name: "CSS3", icon: <Code2 className="text-blue-600" />, level: "Expert" },
     { name: "VS Code", icon: <Terminal className="text-blue-500" />, level: "Daily Tool" }
+  ];
+
+  // Data kontak memakai icon manual yang sudah dibuat di atas
+  const contactLinks = [
+    {
+      name: "Instagram",
+      username: "@deanadb_",
+      url: "https://www.instagram.com/deanadb_/?hl=en",
+      icon: <InstagramIcon size={28} />,
+      color: "bg-gradient-to-br from-pink-500 to-purple-600",
+      hoverShadow: "hover:shadow-pink-200"
+    },
+    {
+      name: "GitHub",
+      username: "deanadibaanugrah",
+      url: "https://github.com/deanadibaanugrah",
+      icon: <GithubIcon size={28} />,
+      color: "bg-gradient-to-br from-gray-700 to-gray-900",
+      hoverShadow: "hover:shadow-gray-300"
+    }
   ];
 
   return (
@@ -80,10 +118,62 @@ const Dean = () => {
               <button onClick={scrollToTechStack} className="px-10 py-3 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 hover:shadow-blue-200 hover:shadow-2xl transition duration-300 transform hover:-translate-y-1">
                 Open to work
               </button>
-              <button className="px-10 py-3 border-2 border-gray-200 text-gray-700 font-bold rounded-xl hover:bg-gray-50 transition duration-300">
+              <button 
+                onClick={() => setShowContact(!showContact)} 
+                className={`px-10 py-3 border-2 font-bold rounded-xl transition duration-300 transform hover:-translate-y-1 ${
+                  showContact 
+                    ? 'border-blue-500 bg-blue-50 text-blue-600' 
+                    : 'border-gray-200 text-gray-700 hover:bg-gray-50'
+                }`}
+              >
                 Contact Info
               </button>
             </div>
+
+            {/* BAGIAN KONTAK YANG MUNCUL SAAT TOMBOL DITEKAN */}
+            {showContact && (
+              <div className="mt-6 animate-fadeIn">
+                <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-6 border border-gray-200 shadow-inner">
+                  <div className="flex items-center justify-between mb-5">
+                    <h3 className="text-lg font-bold text-gray-800 flex items-center gap-2">
+                      <span className="w-2 h-6 bg-blue-600 rounded-full"></span>
+                      Hubungi Saya
+                    </h3>
+                    <button 
+                      onClick={() => setShowContact(false)}
+                      className="p-2 hover:bg-gray-200 rounded-lg transition-colors"
+                    >
+                      <X size={18} className="text-gray-500" />
+                    </button>
+                  </div>
+                  
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {contactLinks.map((contact, index) => (
+                      <a
+                        key={index}
+                        href={contact.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`group flex items-center gap-4 p-5 bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-lg ${contact.hoverShadow} transition-all duration-300 transform hover:-translate-y-1`}
+                      >
+                        <div className={`flex-shrink-0 w-14 h-14 ${contact.color} rounded-xl flex items-center justify-center text-white shadow-md group-hover:scale-110 transition-transform duration-300`}>
+                          {contact.icon}
+                        </div>
+                        <div className="min-w-0">
+                          <p className="font-bold text-gray-900 text-lg">{contact.name}</p>
+                          <p className="text-gray-500 text-sm truncate group-hover:text-gray-700 transition-colors">{contact.username}</p>
+                        </div>
+                        <div className="ml-auto flex-shrink-0">
+                          <svg className="w-5 h-5 text-gray-300 group-hover:text-gray-500 group-hover:translate-x-1 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          </svg>
+                        </div>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
 
@@ -137,6 +227,23 @@ const Dean = () => {
           </div>
         </div>
       </div>
+
+      {/* Animation keyframes */}
+      <style jsx>{`
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(-10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        .animate-fadeIn {
+          animation: fadeIn 0.3s ease-out;
+        }
+      `}</style>
     </div>
   );
 };
