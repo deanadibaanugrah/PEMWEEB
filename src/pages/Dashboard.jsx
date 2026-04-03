@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { MapPin, GraduationCap, ArrowRight, Sparkles, Users } from 'lucide-react';
 import fotoDean from '../assets/profil.jpg';
+import fotoZaki from '../assets/profile.jpeg';
 
 const anggota = [
   {
@@ -27,18 +28,18 @@ const anggota = [
 //     skills: ['Node.js', 'Express', 'MongoDB', 'REST API'],
 //     accent: 'from-[#0B1E3D] via-[#1A3A6B] to-[#0B1E3D]',
 //   },
-//   {
-//     path: '/sinta',
-//     namaLengkap: 'Sinta Maharani Putri',
-//     kelas: 'T2F',
-//     jurusan: 'Teknologi Informasi',
-//     domisili: 'Surabaya, Jawa Timur',
-//     role: 'UI/UX Designer',
-//     foto: null,
-//     singkat: 'Kreatif dalam merancang antarmuka pengguna yang intuitif dengan pendekatan user-centered design dan prototyping.',
-//     skills: ['Figma', 'UI Design', 'Prototyping', 'Wireframe'],
-//     accent: 'from-[#1A0A2E] via-[#3D1F6D] to-[#1A0A2E]',
-//   },
+  {
+    path: '/zaki',
+    namaLengkap: 'Muhammad Muzakky',
+    kelas: 'T2F',
+    jurusan: 'Teknologi Informasi',
+    domisili: 'Pasuruan, Jawa Timur',
+    role: 'UI/UX Designer',
+    foto: fotoZaki,
+    singkat: 'Kreatif dalam merancang antarmuka pengguna yang intuitif dengan pendekatan user-centered design dan prototyping.',
+    skills: ['Figma', 'UI Design', 'Prototyping', 'Wireframe'],
+    accent: 'from-[#1A0A2E] via-[#3D1F6D] to-[#1A0A2E]',
+  },
 ];
 
 const Dashboard = () => {
