@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { GraduationCap, Briefcase, Code2, Layout, ArrowLeft, Users, Link2 } from 'lucide-react';
-import fotoZaki from '../assets/profile.jpeg';
+import fotoZaki from '../assets/zaki.jpg';
 
 // Manual SVG Icons
 const InstagramIcon = (props) => (

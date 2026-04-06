@@ -1,7 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import { MapPin, GraduationCap, ArrowRight, Sparkles, Users } from 'lucide-react';
-import fotoDean from '../assets/profil.jpg';
-import fotoZaki from '../assets/profile.jpeg';
+import fotoDean from "../assets/profil.jpg";
+import fotoZaki from "../assets/zaki.jpg";
+import fotoMifta from '../assets/mifta.jpeg';
 
 const anggota = [
   {
@@ -16,18 +17,18 @@ const anggota = [
     skills: ['React.js', 'Tailwind CSS', 'HTML5', 'CSS3'],
     accent: 'from-[#210201] via-[#4F1312] to-[#210201]',
   },
-//   {
-//     path: '/mifta',
-//     namaLengkap: 'mifta annisa rabbani',
-//     kelas: 'T2F',
-//     jurusan: 'Teknologi Informasi',
-//     domisili: 'Malang, Jawa Timur',
-//     role: 'Backend Developer',
-//     foto: null,
-//     singkat: 'Mahasiswa yang memiliki ketertarikan besar pada pengembangan server-side dan arsitektur sistem yang scalable.',
-//     skills: ['Node.js', 'Express', 'MongoDB', 'REST API'],
-//     accent: 'from-[#0B1E3D] via-[#1A3A6B] to-[#0B1E3D]',
-//   },
+  {
+    path: '/mifta',
+    namaLengkap: 'Mifta Annisa Rabbani',
+    kelas: 'T2F',
+    jurusan: 'Teknologi Informasi',
+    domisili: 'Malang, Jawa Timur',
+    role: 'Backend Developer',
+    foto: fotoMifta,
+    singkat: 'Mahasiswa yang memiliki ketertarikan besar pada pengembangan server-side dan arsitektur sistem yang scalable.',
+    skills: ['Node.js', 'Express', 'MongoDB', 'REST API'],
+    accent: 'from-[#0B1E3D] via-[#1A3A6B] to-[#0B1E3D]',
+  },
   {
     path: '/zaki',
     namaLengkap: 'Muhammad Muzakky',
@@ -64,11 +65,48 @@ const Dashboard = () => {
           <h1 className="text-5xl sm:text-6xl font-extrabold text-white tracking-tight leading-tight mb-6">
             Meet Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Team</span>
           </h1>
-          <p className="text-lg text-white/60 max-w-2xl mx-auto leading-relaxed">
-            Tiga mahasiswa Teknologi Informasi Universitas Brawijaya yang berkolaborasi membangun solusi digital inovatif.
-          </p>
 
-          <div className="mt-10 flex justify-center gap-8">
+          {/* ✨ Tulisan yang di-perbagus ✨ */}
+          <div className="flex justify-center mb-10">
+            <div className="relative max-w-2xl mx-auto">
+              {/* Dekoratif garis atas */}
+              <div className="flex items-center justify-center gap-3 mb-5">
+                <div className="h-px w-12 bg-gradient-to-r from-transparent to-blue-400/50"></div>
+                <div className="w-1.5 h-1.5 rounded-full bg-blue-400/60"></div>
+                <div className="w-1 h-1 rounded-full bg-purple-400/40"></div>
+                <div className="w-1.5 h-1.5 rounded-full bg-purple-400/60"></div>
+                <div className="h-px w-12 bg-gradient-to-l from-transparent to-purple-400/50"></div>
+              </div>
+
+              {/* Glass card pembungkus teks */}
+              <div className="relative bg-white/[0.04] backdrop-blur-md border border-white/[0.08] rounded-2xl px-8 py-6 shadow-[0_8px_32px_rgba(0,0,0,0.2)]">
+                {/* Subtle glow di dalam card */}
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/[0.03] via-transparent to-purple-500/[0.03] pointer-events-none"></div>
+
+                <p className="relative text-[17px] sm:text-lg text-white/70 leading-[1.85] tracking-wide font-light">
+                  Tiga mahasiswa{' '}
+                  <span className="text-white/90 font-medium">Teknologi Informasi</span>{' '}
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 via-blue-200 to-purple-300 font-semibold tracking-wide">
+                    Universitas Brawijaya
+                  </span>{' '}
+                  yang berkolaborasi membangun{' '}
+                  <span className="text-white/90 font-medium">solusi digital</span>{' '}
+                  inovatif.
+                </p>
+              </div>
+
+              {/* Dekoratif garis bawah */}
+              <div className="flex items-center justify-center gap-3 mt-5">
+                <div className="h-px w-12 bg-gradient-to-r from-transparent to-purple-400/50"></div>
+                <div className="w-1.5 h-1.5 rounded-full bg-purple-400/60"></div>
+                <div className="w-1 h-1 rounded-full bg-blue-400/40"></div>
+                <div className="w-1.5 h-1.5 rounded-full bg-blue-400/60"></div>
+                <div className="h-px w-12 bg-gradient-to-l from-transparent to-blue-400/50"></div>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-4 flex justify-center gap-8">
             <div className="text-center">
               <div className="text-3xl font-extrabold text-white">3</div>
               <div className="text-sm text-white/50 mt-1">Anggota</div>
